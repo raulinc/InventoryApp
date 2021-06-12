@@ -21,3 +21,16 @@ body{
     flex : 1 1 30%;
     border-radius: 7px;
 }
+.location-edit{
+    background-color:white;
+    text-align:center;
+    margin:20px;
+    padding:5px;
+    height:250px;
+    border-radius:10px;
+}
+.location-list{
+     background-color:white;
+      margin:20px;
+        border-radius:10px;
+}

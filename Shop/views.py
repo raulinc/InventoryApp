@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse
+from .models import locations,productCategoy
 from django.contrib.auth import authenticate,login
+from .forms import ModifiedUserForm,LocationsForm,CategoryForm
 
 #Create your views here.
 
@@ -21,12 +23,42 @@ def loginUser(request):
 
 def registerUser(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = ModifiedUserForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
-    form = UserCreationForm()
+    form = ModifiedUserForm()
     return render(request,'Shop/register.html',{'form':form})
 
 def userDashboard(request):
     return render(request,'Shop/dashboard.html')
+
+
+def Locations(request):
+    if request.method == 'POST':
+        form= LocationsForm(request.POST)
+        if form.is_valid():
+            loc = form.cleaned_data['locationname']
+            locations.objects.create(locationname=loc)
+            return redirect('locations')
+
+    locs = locations.objects.all()
+    form = LocationsForm()
+    return render(request,'Shop/locations.html',{'form':form,'locs':locs})
+
+
+def productCategory(request):
+    if request.method == 'POST':
+        form= CategoryForm(request.POST)
+        if form.is_valid():
+            loc = form.cleaned_data['locationname']
+            productCategoy.objects.create(locationname=loc)
+            return redirect('category')
+
+
+    cats = productCategoy.objects.all()
+    form = CategoryForm()
+    return render(request,'Shop/category.html',{'cats':cats,'form':form})
+
+def shopDetail(request):
+    return render(request,'Shop/shop.html')

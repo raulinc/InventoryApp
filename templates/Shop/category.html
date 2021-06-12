@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class=" col m4 location-edit">
+            <h4>Add Category</h4>
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn">Submit</button>
+            </form>
+        </div>
+        <div class=" col m6 location-list">
+            <h4>Locations</h4>
+            {% for c in cats %}
+            <p>{{c}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
