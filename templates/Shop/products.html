@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class=" col m4 product-edit">
+            <h4>Add Products</h4>
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn">Submit</button>
+            </form>
+        </div>
+        <div class=" col m6 product-list">
+            <h4>Products</h4>
+            {% for p in product %}
+            <p>{{p}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

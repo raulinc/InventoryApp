@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import locations
+from .models import shopDetail,productShop
 
 class ModifiedUserForm(UserCreationForm):
     class Meta:
@@ -14,5 +14,12 @@ class LocationsForm(forms.Form):
 class CategoryForm(forms.Form):
     category_name = forms.CharField(max_length=30)
 
-class ShopForm(forms.Form):
-    pass
+class ShopForm(forms.ModelForm):
+    class Meta:
+        model = shopDetail
+        fields = ['shopName','address','shopLocation']
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = productShop
+        fields = ['productname','productDescription','productCategory','price','shop']

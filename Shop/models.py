@@ -29,6 +29,7 @@ class productShop(models.Model):
     productname = models.CharField(max_length=40)
     productDescription = models.TextField()
     productCategory = models.ForeignKey(productCategoy,on_delete=models.DO_NOTHING)
+    price = models.PositiveIntegerField()
     shop = models.ForeignKey(shopDetail,on_delete=models.CASCADE)
 
     def __str__(self):

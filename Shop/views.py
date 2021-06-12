@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse
-from .models import locations,productCategoy
+from .models import locations,productCategoy,productShop
 from django.contrib.auth import authenticate,login
-from .forms import ModifiedUserForm,LocationsForm,CategoryForm
+from .forms import ModifiedUserForm,LocationsForm,CategoryForm,ShopForm,ProductForm
 
 #Create your views here.
 
@@ -61,4 +61,15 @@ def productCategory(request):
     return render(request,'Shop/category.html',{'cats':cats,'form':form})
 
 def shopDetail(request):
-    return render(request,'Shop/shop.html')
+    name= request.user
+    if request.method =='POST':
+        pass
+
+    form= ShopForm()
+    print(name)
+    return render(request,'Shop/shop.html',{'form':form})
+
+def products(request):
+    product=productShop.objects.all()
+    form=ProductForm()
+    return render(request,'Shop/products.html',{'form':form,'product':product})
