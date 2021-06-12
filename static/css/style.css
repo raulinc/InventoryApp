@@ -1,0 +1,23 @@
+:root{
+    font-family: 'Didact Gothic', sans-serif;
+}
+body{
+    background-color:#3bc6e8;
+}
+.nav-wrapper{
+    background-color:#e8623b;
+}
+.brand-logo{
+    margin-left:10px;
+}
+#dashboard-top{
+    display :flex;
+}
+.stats{
+    background-color: #f8f4c7;
+    margin:5px;
+    padding:5px;
+    text-align :center;
+    flex : 1 1 30%;
+    border-radius: 7px;
+}
