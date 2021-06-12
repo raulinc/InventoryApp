@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <title>Inventory | Login</title>
+    <style>
+        body{
+            background-color:#72CCB4;
+        }
+        .container-main{
+            margin:10%;
+        }
+        .container{
+        box-shadow: 10px 10px 5px grey;
+            border :1px solid;
+            width:300px;
+            background-color:white;
+            border-radius: 5px;
+
+        }
+        .content{
+            border-top-left-radius:5px;
+            border-top-right-radius:5px;
+            text-align:center;
+            background-color:#478071;
+            padding:8px;
+        }
+        .form-content{
+            padding : 9px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-main">
+        <div class="container">
+        <div class="content">
+            <h3>Login</h3>
+        </div>
+        <div class="form-content">
+            <form class="form" method="post">
+                {% csrf_token %}
+                {{form}}
+                <button type="submit" class="waves-effect waves-light btn">Login</button>
+            </form>
+            <p>Don't have an Account Register <a href="{% url 'registerUser'%}">Here</a></p>
+        </div>
+    </div>
+        </div>
+</body>
+</html>

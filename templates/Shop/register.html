@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <title>Inventory | Register</title>
+
+    <style>
+        body{
+            background-color:#72CCB4;
+        }
+        .container-main{
+            margin:10%;
+        }
+        .container{
+            border :1px solid;
+            box-shadow: 10px 10px 5px grey;
+            width:400px;
+            background-color:white;
+            border-radius: 5px;
+
+        }
+        .content{
+            border-top-left-radius:5px;
+            border-top-right-radius:5px;
+            text-align:center;
+            background-color:#478071;
+            padding:8px;
+        }
+        .form-content{
+            padding : 9px;
+        }
+    </style>
+</head>
+<body>
+ <div class="container-main">
+        <div class="container">
+        <div class="content">
+            <h3>Register</h3>
+        </div>
+        <div class="form-content">
+            <form class="form" method="post" novalidate>
+                {% csrf_token %}
+                {{form.username.label_tag}}
+                {{form.username}}
+                {{form.password1.label_tag}}
+                    {{form.password1}}{{form.password1.errors|striptags}}
+                    {{form.password2.label_tag}}
+                    {{form.password2}}{{form.password2.errors|striptags}}
+                <button class="waves-effect waves-light btn" type="submit">Register</button>
+            </form>
+            <p> Click <a href="{% url 'login'%}">Here</a> to Login</p>
+        </div>
+    </div>
+        </div>
+</body>
+</html>
